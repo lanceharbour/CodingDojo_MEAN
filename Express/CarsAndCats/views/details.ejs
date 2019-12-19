@@ -1,0 +1,11 @@
+<html>
+    <body>
+        <img style="height: 300px; width: 300px;" src="/images/<%= details.image %>">
+        <p>Name: <%= details.name %></p>
+        <p>Age: <%= details.age %></p>
+        <p>Sleeping spots: </p>
+        <% for (var spot of details.spots){ %>
+           <%= spot %><br>
+        <% } %>
+    </body>
+</html>

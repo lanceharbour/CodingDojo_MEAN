@@ -1,0 +1,33 @@
+<h1>The Message Board</h1>
+<hr style="width:45%;text-align:left;margin-left:0">
+<div style="margin-left: 25px;">
+    <form action="/addmessage" method="post">
+        <p>Name:</p>
+        <p><input type="text" name="name" required></p>
+        <p>Message:</p>
+        <textarea name="message" rows="4" cols="75" required></textarea><br>
+        <input style="margin-left: 450px; margin-top: 5px;" type="submit" value="Add message">
+    </form>
+</div>
+<hr style="width:45%;text-align:left;margin-left:0">
+<div style="margin-left: 50px;">
+    <% for (const message of messages) { %>
+        <p style="font-size: 20px;"><b>Name: <%= message.name %></b></p>
+        <p style="font-size: 20px;"><b>Message: <%= message.message %></b></p>
+            <div style="margin-left: 30px;">
+                <% for (const comment of message.comments) { %>
+                    <p>Name: <%= comment.name %></b></p>
+                    <p>Message: <%= comment.comment %></b></p>
+                    <hr style="width:40%;text-align:left;margin-left:0">
+                <% } %>
+                <form action="/addcomment/<%= message._id %>" method="post">
+                    <p>Name:</p>
+                    <p><input type="text" name="name" required></p>
+                    <p>Comment:</p>
+                    <textarea name="comment" rows="4" cols="75" required></textarea><br>
+                    <input style="margin-left: 450px; margin-top: 5px;" type="submit" value="Add comment">
+                </form>
+            </div>
+    <% } %>
+
+</div>

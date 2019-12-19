@@ -1,0 +1,9 @@
+<form action="/">
+    <input type="submit" value="Dashboard">
+</form>
+<h1>Gecko Info</h1>
+<p>Name: <%= gecko.name %></p>
+<p>Age: <%= gecko.age %></p>
+<form action="/geckos/edit/<%= gecko._id %>">
+    <input type="submit" value="Edit">
+</form>

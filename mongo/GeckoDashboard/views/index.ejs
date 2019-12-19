@@ -1,0 +1,24 @@
+<h1>Gecko Dashboard</h1>
+<form action="/geckos/new">
+    <input type="submit" value="New gecko">
+</form>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+        <% for ( var gecko of geckos) { %>
+            <tr>
+                <td><a href="/geckos/<%= gecko._id %>"><%= gecko.name %></a></td>
+                <td><%= gecko.age %></td>
+                <td>
+                    <form action="/geckos/edit/<%= gecko._id %>">
+                        <input type="submit" value="edit">
+                    </form>
+                    <form action="/geckos/destroy/<%= gecko._id %>" method="post">
+                        <input type="submit" value="delete">
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+    </table><br>

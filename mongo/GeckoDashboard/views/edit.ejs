@@ -1,0 +1,11 @@
+<form action="/" method="get">
+    <input type="submit" value="Dashboard">
+</form>
+<form action="/geckos/<%= gecko._id %>" method="POST">
+    <p>Gecko Name: <input type="text" name="name" value="<%= gecko.name %>" required></p>
+    <p>Age: <input type="text" name="age" value="<%= gecko.age %>" required></p>
+    <input type="submit" value="Edit Gecko">
+</form>
+<form action="/geckos/destroy/<%= gecko._id %>" method="post">
+    <input type="submit" value="Delete Gecko">
+</form>

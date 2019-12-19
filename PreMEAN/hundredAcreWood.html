@@ -1,0 +1,158 @@
+<html>
+<head>
+    <script>
+        var eeyore = { 
+            character: "Eeyore",
+            greet: function(){
+                console.log("Thanks for noticin’ me.");
+            }
+        };
+        var heffalumps = { character: "Heffalumps",
+            greet: function(){
+                console.log("Here be Heffalumps!");
+            } 
+        };
+        var kanga = { character: "Kanga",
+            greet: function(){
+                console.log("Drink your milk");
+            } 
+         };
+        var crobbin = { character: "Christopher Robbing",
+            greet: function(){
+                console.log("Doing nothing often leads to the very best kind of something.");
+            } 
+         };
+        var owl = { character: "Owl",
+            greet: function(){
+                console.log("Whoooooo!");
+            } 
+        };
+        var rabbit = { character: "Rabbit",
+            greet: function(){
+                console.log("Let's pretend it isn't, and see what happens.");
+            } 
+         };
+        var gopher = { character: "Gopher",
+            greet: function(){
+                console.log("Good idea! We'll use dynamite, to shhh-ave time.");
+            }
+        };
+        var piglet = { character: "Piglet",
+            greet: function(){
+                console.log("The things that make me different are the things that make me ME.");
+            } 
+        };
+        var pooh = { character: "Winnie the Pooh",
+            greet: function(){
+                console.log("Oh bother!");
+            } 
+        };
+        var bees = { character: "Bees",
+            greet: function(){
+                console.log("Bzzzz!");
+            }
+        };
+        var tigger = {character: "Tigger",
+            greet: function(){
+                console.log("The wonderful thing about Tiggers is Tiggers are wonderful things!");
+            } 
+        };
+        tigger.north = pooh;
+
+        pooh.north = crobbin;
+        pooh.south = tigger;
+        pooh.east = bees;
+        pooh.west = piglet;
+
+        bees.north = rabbit;
+        bees.west = pooh;
+
+        piglet.north = owl;
+        piglet.east = pooh;
+
+        gopher.west = rabbit;
+
+        rabbit.south = bees;
+        rabbit.east = gopher;
+        rabbit.west = crobbin;
+
+        owl.south = piglet;
+        owl.east = crobbin;
+
+        crobbin.north = kanga;
+        crobbin.south = pooh;
+        crobbin.east = rabbit;
+        crobbin.west = owl;
+
+        kanga.north = eeyore;
+        kanga.south = crobbin;
+
+        heffalumps.west = eeyore;
+
+        eeyore.south = kanga;
+        eeyore.east = heffalumps;
+
+        var player = { 
+            location: tigger,
+            honey: false
+            };
+
+        function move(direction){
+            console.log(direction);
+            if (direction == "north" && player.location.north){
+                player.location = player.location.north;
+                console.log("You are now at "+player.location.character+"'s house.");
+                return player.location.greet();
+            }
+            if (direction == "south" && player.location.south){
+                player.location = player.location.south;
+                console.log("You are now at "+player.location.character+"'s house.");
+                return player.location.greet();
+            }
+            if (direction == "east" && player.location.east){
+                player.location = player.location.east;
+                console.log("You are now at "+player.location.character+"'s house.");
+                return player.location.greet();
+            }
+            if (direction == "west" && player.location.west){
+                player.location = player.location.west;
+                console.log("You are now at "+player.location.character+"'s house.");
+                return player.location.greet();
+            } 
+            else
+                return "You can't go this way.";
+        }
+
+        function mission(){
+            characterList = [pooh, crobbin, tigger, kanga, owl, gopher, rabbit, eeyore, piglet]
+            const rand = Math.floor(Math.random()*Math.floor(characterList.length));
+            recipient = characterList[rand];
+            recipient.objective = true;
+            console.log(recipient.character+' needs some honey. Find some honey and bring it to them.');
+        }
+
+        function pickup(){
+            if(player.location == bees){
+                player.honey = true;
+                console.log('You picked up the honey for '+recipient.character);
+            }
+            else {
+                console.log('No honey at this location');
+            }
+        }
+        
+        function drop(){
+            if(player.location.objective == true){
+                console.log('Thanks for getting '+player.location.character+' the honey!');
+            }
+            else {
+                console.log('This isnt the person who wanted honey.');
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

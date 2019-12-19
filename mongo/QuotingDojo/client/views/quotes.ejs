@@ -1,0 +1,8 @@
+<h1>All the quotes!</h1>
+<% for (var quote of quotes) { %>
+    <p>"<%= quote.quote %>"</p>
+    <p style="margin-left: 10px; color: blue;"><%= quote.name %> at <%= moment(quote.createdAt).format("DD-MM-YYYY HH:mm") %></p>
+<% } %>
+<form action="/">
+    <input type="submit" value="Home">
+</form>

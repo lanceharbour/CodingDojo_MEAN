@@ -1,0 +1,10 @@
+<form action="/users" method="POST">
+<p>Your Name: <input type="text" name="name" required></p>
+<p>Age: <input type="text" name="age" required></p>
+<input type="submit" value="Submit Survey">
+</form>
+<% for (var user of users) { %>
+    <h3>Name: <%= user.name %></h3>
+    <h4>Email: <%= user.age %></h4>
+    <hr>
+<% } %>
